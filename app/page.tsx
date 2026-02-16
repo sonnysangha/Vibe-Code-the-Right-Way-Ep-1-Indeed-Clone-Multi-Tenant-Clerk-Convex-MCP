@@ -20,7 +20,7 @@ export default function Home() {
             </div>
           </div>
           <nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex dark:text-slate-300">
-            <Link href="/server" className="transition-colors hover:text-slate-900 dark:hover:text-white">
+            <Link href="/jobs" className="transition-colors hover:text-slate-900 dark:hover:text-white">
               Jobs
             </Link>
             <Link href="/company" className="transition-colors hover:text-slate-900 dark:hover:text-white">
@@ -69,7 +69,7 @@ export default function Home() {
                   Search title, company, or skill
                 </div>
                 <Button asChild className="rounded-xl">
-                  <Link href="/server" className="gap-2">
+                  <Link href="/jobs" className="gap-2">
                     Explore jobs
                     <ArrowRight className="size-4" />
                   </Link>

@@ -556,6 +556,13 @@ flowchart LR
   - `app/(app)/applications/page.tsx`
   - `app/(app)/favorites/page.tsx`
   - `app/(app)/profile/page.tsx`
+- Candidate route group implemented and wired to Convex APIs:
+  - jobs search/filter + save job
+  - job detail + apply flow
+  - applications list + withdraw
+  - favorites list + remove
+  - profile + resumes management
+- P4B completion status: **completed**.
 
 #### P4C: Company dashboard routes
 

@@ -7,12 +7,17 @@ const isPublicRoute = createRouteMatcher([
   "/sign-up(.*)",
   "/pricing",
 ]);
-const isWebhookRoute = createRouteMatcher(["/api/webhooks(.*)"]);
-const isCandidateRoute = createRouteMatcher(["/server"]);
+const isCandidateRoute = createRouteMatcher([
+  "/server",
+  "/jobs(.*)",
+  "/applications(.*)",
+  "/favorites(.*)",
+  "/profile(.*)",
+]);
 const isCompanyRoute = createRouteMatcher(["/company(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isWebhookRoute(req) || isPublicRoute(req)) return;
+  if (isPublicRoute(req)) return;
 
   if (isCandidateRoute(req) || isCompanyRoute(req)) {
     await auth.protect();
