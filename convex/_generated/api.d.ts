@@ -9,6 +9,7 @@
  */
 
 import type * as applications from "../applications.js";
+import type * as companies from "../companies.js";
 import type * as favorites from "../favorites.js";
 import type * as http from "../http.js";
 import type * as jobs from "../jobs.js";
@@ -26,6 +27,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   applications: typeof applications;
+  companies: typeof companies;
   favorites: typeof favorites;
   http: typeof http;
   jobs: typeof jobs;

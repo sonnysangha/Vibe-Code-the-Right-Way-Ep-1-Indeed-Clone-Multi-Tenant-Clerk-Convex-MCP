@@ -514,6 +514,9 @@ flowchart LR
 
 - Sync only user/org/membership lifecycle events into Convex-facing app records.
 - Webhook ingestion runs on Convex HTTP routes (not Next.js middleware-protected routes).
+- Cleanup completed:
+  - Removed old Next.js webhook route bypass in `proxy.ts` (`/api/webhooks(.*)`).
+  - Removed stale empty folders under `app/api/webhooks/*`.
 
 #### P3C: No billing sync policy
 
@@ -562,19 +565,43 @@ flowchart LR
   - applications list + withdraw
   - favorites list + remove
   - profile + resumes management
+- Candidate middleware protection expanded in `proxy.ts` for:
+  - `/jobs(.*)`
+  - `/applications(.*)`
+  - `/favorites(.*)`
+  - `/profile(.*)`
 - P4B completion status: **completed**.
 
 #### P4C: Company dashboard routes
 
 - Build company pages:
-  - `app/(company)/dashboard/page.tsx`
-  - `app/(company)/jobs/page.tsx`
-  - `app/(company)/jobs/new/page.tsx`
-  - `app/(company)/applications/page.tsx`
+  - `app/company/page.tsx` (overview dashboard)
+  - `app/company/jobs/page.tsx`
+  - `app/company/jobs/new/page.tsx`
+  - `app/company/applications/page.tsx`
+- Added company context query in Convex:
+  - `convex/companies.ts` with `getMyCompanyContext` for org-aware `companyId` + role resolution.
+- Added role-aware navigation and actions in company layout and pages:
+  - `org:admin` and `org:recruiter`: create/reopen/close/decision actions.
+  - `org:member`: read-only views.
+- Checklist completion:
+  1. Company overview dashboard with org-aware summary cards. ✅
+  2. Company jobs list wired to `api.jobs.listCompanyJobs`. ✅
+  3. New job form wired to `api.jobs.createJobListing`. ✅
+  4. Applications review wired to `api.applications.listCompanyApplications`. ✅
+  5. Decision controls wired to `api.applications.updateApplicationStatus`. ✅
+  6. Role-aware UI implemented for admin/recruiter vs member. ✅
+  7. Route guards remain in middleware (`proxy.ts`) with no page-level redirect duplication. ✅
+- P4C completion status: **completed**.
 
 #### P4D: Company billing route
 
 - Build `app/(company)/billing/page.tsx` with `<PricingTable />`, tier details, limit status, and upgrade actions.
+- First-time user UX requirement (implemented on public pricing page):
+  - `app/pricing/page.tsx` must handle users with no org selected.
+  - If `orgId` is missing, show Clerk `CreateOrganization` flow inline first.
+  - After org creation, redirect back to `/pricing` and render `<PricingTable for="organization" />`.
+  - Include `OrganizationSwitcher` when `orgId` exists so users can switch org context before selecting a plan.
 
 ### Phase 5: Quality, observability, and launch hardening
 

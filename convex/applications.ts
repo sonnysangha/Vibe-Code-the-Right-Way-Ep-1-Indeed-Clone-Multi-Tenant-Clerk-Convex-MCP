@@ -140,7 +140,21 @@ export const listCompanyApplications = query({
           .take(limit * 2);
 
     const filtered = args.jobId ? rows.filter((row) => row.jobId === args.jobId) : rows;
-    return filtered.slice(0, limit);
+    const limited = filtered.slice(0, limit);
+
+    return await Promise.all(
+      limited.map(async (application) => {
+        const [job, applicant] = await Promise.all([
+          ctx.db.get(application.jobId),
+          ctx.db.get(application.applicantUserId),
+        ]);
+        return {
+          ...application,
+          job,
+          applicant,
+        };
+      }),
+    );
   },
 });
 

@@ -23,6 +23,17 @@ export default async function CompanyLayout({
         <Link href="/company" className="rounded-md border px-3 py-2 text-sm">
           Dashboard
         </Link>
+        <Link href="/company/jobs" className="rounded-md border px-3 py-2 text-sm">
+          Jobs
+        </Link>
+        <Link href="/company/applications" className="rounded-md border px-3 py-2 text-sm">
+          Applications
+        </Link>
+        <Protect permission="org:job_posting:manage">
+          <Link href="/company/jobs/new" className="rounded-md border px-3 py-2 text-sm">
+            Post job
+          </Link>
+        </Protect>
         <Protect role="org:admin">
           <Link href="/company/billing" className="rounded-md border px-3 py-2 text-sm">
             Billing
