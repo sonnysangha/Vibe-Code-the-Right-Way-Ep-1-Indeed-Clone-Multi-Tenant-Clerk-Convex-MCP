@@ -544,6 +544,9 @@ flowchart LR
 #### P4A: Landing page
 
 - Redesign `[/Users/saajansangha/Documents/Builds/indeed-clone-clerk-nextjs-16/app/page.tsx](/Users/saajansangha/Documents/Builds/indeed-clone-clerk-nextjs-16/app/page.tsx)` with hero, feature sections, and clear candidate/company CTAs.
+- Use Tailwind + shadcn/ui components for structure and visual consistency.
+- P4A restyle iteration (modern redesign) requested and approved.
+- P4A completion status: **completed** (modern restyle pass).
 
 #### P4B: Candidate routes
 
