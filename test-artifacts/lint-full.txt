@@ -1,0 +1,68 @@
+
+> indeed-clone-clerk-nextjs-16@0.1.0 lint
+> eslint .
+
+
+/workspace/app/(app)/profile/page.tsx
+  111:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/workspace/app/(app)/profile/page.tsx:111:5
+  109 |
+  110 |   useEffect(() => {
+> 111 |     setFormMounted(true);
+      |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  112 |   }, []);
+  113 |
+  114 |   // Section editing state  react-hooks/set-state-in-effect
+
+/workspace/app/company/applications/page.tsx
+  11:29  warning  'CardHeader' is defined but never used  @typescript-eslint/no-unused-vars
+  11:41  warning  'CardTitle' is defined but never used   @typescript-eslint/no-unused-vars
+
+/workspace/components/landing/job-letter-outbound.tsx
+  172:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/workspace/components/landing/job-letter-outbound.tsx:172:7
+  170 |   useEffect(() => {
+  171 |     if (reducedMotion) {
+> 172 |       setProgress(1);
+      |       ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  173 |       return;
+  174 |     }
+  175 |  react-hooks/set-state-in-effect
+
+/workspace/components/notification-bell.tsx
+  69:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/workspace/components/notification-bell.tsx:69:5
+  67 |
+  68 |   useEffect(() => {
+> 69 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  70 |   }, []);
+  71 |
+  72 |   const unreadCount = useQuery(api.notifications.getUnreadNotificationCount) ?? 0;  react-hooks/set-state-in-effect
+
+/workspace/convex/seed.ts
+  892:17  warning  '_key' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 6 problems (3 errors, 3 warnings)
+

@@ -169,7 +169,6 @@ export function JobLetterOutbound({
 
   useEffect(() => {
     if (reducedMotion) {
-      setProgress(1);
       return;
     }
 

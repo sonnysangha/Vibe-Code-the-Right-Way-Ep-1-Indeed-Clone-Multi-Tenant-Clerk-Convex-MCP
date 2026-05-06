@@ -1,0 +1,49 @@
+
+> indeed-clone-clerk-nextjs-16@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+▲ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.3s
+  Running TypeScript ...
+  Finished TypeScript in 4.5s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/16) ...
+  Generating static pages using 3 workers (4/16) 
+  Generating static pages using 3 workers (8/16) 
+  Generating static pages using 3 workers (12/16) 
+✓ Generating static pages using 3 workers (16/16) in 276ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /app
+├ ƒ /applications
+├ ƒ /company
+├ ƒ /company/applications
+├ ƒ /company/billing
+├ ƒ /company/jobs
+├ ƒ /company/jobs/[jobId]/edit
+├ ƒ /company/jobs/new
+├ ƒ /favorites
+├ ƒ /jobs
+├ ƒ /jobs/[jobId]
+├ ƒ /notifications
+├ ƒ /pricing
+├ ƒ /profile
+├ ƒ /server
+├ ƒ /sign-in/[[...sign-in]]
+└ ƒ /sign-up/[[...sign-up]]
+
+
+ƒ Proxy (Middleware)
+
+ƒ  (Dynamic)  server-rendered on demand
+
