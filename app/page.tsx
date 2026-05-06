@@ -25,6 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { JobLetterOutbound } from "@/components/landing/job-letter-outbound";
 import { SiteLogo } from "@/components/site-logo";
 
 const AVATARS = [
@@ -368,16 +369,7 @@ export default function Home() {
       </section>
 
       <section className="animate-fade-in stagger-5 border-t border-border/40">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-8 px-6 py-10 md:py-14">
-          {COMPANIES.map((company) => (
-            <span
-              key={company.name}
-              className={`select-none text-muted-foreground/40 transition-colors hover:text-muted-foreground/70 ${company.className}`}
-            >
-              {company.name}
-            </span>
-          ))}
-        </div>
+        <JobLetterOutbound companies={COMPANIES} />
       </section>
 
       <section className="border-t border-border/40 bg-linear-to-b from-secondary/40 to-background py-16 md:py-24">
