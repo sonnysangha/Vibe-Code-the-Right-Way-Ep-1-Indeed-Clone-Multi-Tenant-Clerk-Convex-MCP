@@ -48,9 +48,9 @@ const DECORATIONS = [
 
 const COMPANIES = [
   { name: "Goople", className: "text-2xl font-medium tracking-tight" },
-  { name: "amazom", className: "text-xl font-bold tracking-tight" },
-  { name: "dribble", className: "text-2xl font-bold italic tracking-tight" },
-  { name: "slak", className: "text-2xl font-bold tracking-tight" },
+  { name: "Amazo", className: "text-xl font-bold tracking-tight" },
+  { name: "Dribbble", className: "text-2xl font-bold italic tracking-tight" },
+  { name: "Slak", className: "text-2xl font-bold tracking-tight" },
   { name: "Vina", className: "text-2xl font-light italic tracking-wide" },
   { name: "airbnp", className: "text-xl font-bold tracking-tight" },
 ];
