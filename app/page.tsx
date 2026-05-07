@@ -5,18 +5,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import {
+  Activity,
   ArrowRight,
+  BadgeCheck,
   Bookmark,
   Briefcase,
   BriefcaseBusiness,
   Building2,
   ClipboardList,
   FileText,
+  Gift,
   Heart,
+  Layers,
+  ListOrdered,
   Menu,
   PenLine,
   Pencil,
   Quote,
+  Rocket,
   Search,
   Send,
   Shield,
@@ -110,6 +116,13 @@ const EMPLOYMENT_TYPES = [
   { value: "contract", label: "Contract" },
   { value: "internship", label: "Internship" },
   { value: "temporary", label: "Temporary" },
+];
+
+const LANDING_STATS = [
+  { value: "$0", label: "Always free for candidates", icon: Gift },
+  { value: "3", label: "Plans for companies", icon: Layers },
+  { value: "10", label: "Team seats per workspace", icon: Users },
+  { value: "24/7", label: "Real-time application updates", icon: Activity },
 ];
 
 export default function Home() {
@@ -320,6 +333,14 @@ export default function Home() {
         ))}
 
         <div className="relative z-10 mx-auto max-w-2xl text-center">
+          <div className="animate-fade-in mb-5 flex justify-center">
+            <div
+              className="flex size-14 items-center justify-center rounded-full bg-jade text-white shadow-md"
+              aria-hidden
+            >
+              <Briefcase className="size-6 shrink-0" aria-hidden />
+            </div>
+          </div>
           <h1 className="animate-fade-in font-(family-name:--font-bricolage) text-4xl leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-6xl">
             Find & Hire
             <br />
@@ -397,23 +418,42 @@ export default function Home() {
       </section>
 
       <section className="animate-fade-in stagger-5 border-t border-border/40">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-8 px-6 py-10 md:py-14">
-          {COMPANIES.map((company) => (
+        <div className="mx-auto max-w-5xl px-6 py-10 md:py-14">
+          <p className="mb-8 flex flex-wrap items-center justify-center gap-2 text-center text-xs font-semibold tracking-wide text-muted-foreground uppercase">
             <span
-              key={company.name}
-              className={`select-none text-muted-foreground/40 transition-colors hover:text-muted-foreground/70 ${company.className}`}
+              className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-secondary text-jade ring-1 ring-border/40"
+              aria-hidden
             >
-              {company.name}
+              <BadgeCheck className="size-4" aria-hidden />
             </span>
-          ))}
+            Trusted by teams
+          </p>
+          <div className="flex flex-wrap items-center justify-between gap-8">
+            {COMPANIES.map((company) => (
+              <span
+                key={company.name}
+                className={`select-none text-muted-foreground/40 transition-colors hover:text-muted-foreground/70 ${company.className}`}
+              >
+                {company.name}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="border-t border-border/40 bg-linear-to-b from-secondary/40 to-background py-16 md:py-24">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="animate-fade-in text-center font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-            How it&apos;s work?
-          </h2>
+          <div className="animate-fade-in flex flex-col items-center">
+            <div
+              className="mb-5 flex size-14 items-center justify-center rounded-full bg-jade/10 text-jade shadow-sm ring-1 ring-jade/15"
+              aria-hidden
+            >
+              <ListOrdered className="size-6 shrink-0" aria-hidden />
+            </div>
+            <h2 className="text-center font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+              How it&apos;s work?
+            </h2>
+          </div>
 
           <div className="relative mt-14 grid gap-12 md:mt-20 md:grid-cols-3 md:gap-0">
             {HOW_IT_WORKS.map((step, i) => (
@@ -462,8 +502,15 @@ export default function Home() {
       <section className="border-t border-border/40 py-16 md:py-24">
         <div className="mx-auto grid max-w-5xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-jade/10 px-3 py-1 text-xs font-semibold tracking-wide text-jade uppercase">
-              <Heart className="size-3" />
+            <div className="mb-4 flex justify-start">
+              <div
+                className="flex size-14 items-center justify-center rounded-full bg-jade text-white shadow-md"
+                aria-hidden
+              >
+                <Heart className="size-6 shrink-0" aria-hidden />
+              </div>
+            </div>
+            <span className="inline-flex items-center rounded-full bg-jade/10 px-3 py-1 text-xs font-semibold tracking-wide text-jade uppercase">
               For Job Seekers
             </span>
             <h2 className="mt-4 font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl">
@@ -630,8 +677,15 @@ export default function Home() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-terracotta/10 px-3 py-1 text-xs font-semibold tracking-wide text-terracotta uppercase">
-              <Building2 className="size-3" />
+            <div className="mb-4 flex justify-start">
+              <div
+                className="flex size-14 items-center justify-center rounded-full bg-terracotta text-white shadow-md"
+                aria-hidden
+              >
+                <Building2 className="size-6 shrink-0" aria-hidden />
+              </div>
+            </div>
+            <span className="inline-flex items-center rounded-full bg-terracotta/10 px-3 py-1 text-xs font-semibold tracking-wide text-terracotta uppercase">
               For Companies
             </span>
             <h2 className="mt-4 font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl">
@@ -783,25 +837,37 @@ export default function Home() {
       {/* Stats */}
       <section className="border-t border-border/40 py-12 md:py-16">
         <div className="mx-auto grid max-w-4xl gap-8 px-6 md:grid-cols-4">
-          {[
-            { value: "$0", label: "Always free for candidates" },
-            { value: "3", label: "Plans for companies" },
-            { value: "10", label: "Team seats per workspace" },
-            { value: "24/7", label: "Real-time application updates" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
+          {LANDING_STATS.map((stat) => {
+            const StatIcon = stat.icon;
+            return (
+              <div key={stat.label} className="text-center">
+                <div
+                  className="mx-auto mb-3 flex size-11 items-center justify-center rounded-xl bg-secondary/80 text-jade ring-1 ring-border/50"
+                  aria-hidden
+                >
+                  <StatIcon className="size-5 shrink-0" aria-hidden />
+                </div>
+                <p className="font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* CTA */}
       <section className="border-t border-border/40 bg-foreground py-16 text-background md:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
+          <div className="mb-5 flex justify-center">
+            <div
+              className="flex size-14 items-center justify-center rounded-full bg-background/15 text-jade ring-1 ring-background/25"
+              aria-hidden
+            >
+              <Rocket className="size-6 shrink-0" aria-hidden />
+            </div>
+          </div>
           <h2 className="font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Ready to get started?
           </h2>
