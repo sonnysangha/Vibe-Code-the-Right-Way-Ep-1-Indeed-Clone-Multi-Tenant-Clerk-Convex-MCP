@@ -21,6 +21,7 @@
 /build
 
 # misc
+artifacts/
 .DS_Store
 *.pem
 
