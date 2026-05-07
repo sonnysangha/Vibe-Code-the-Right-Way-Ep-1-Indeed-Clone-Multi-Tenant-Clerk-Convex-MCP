@@ -10,6 +10,7 @@ import {
   Briefcase,
   BriefcaseBusiness,
   Building2,
+  ChevronDown,
   ClipboardList,
   FileText,
   Heart,
@@ -71,6 +72,49 @@ const HOW_IT_WORKS = [
     icon: PenLine,
     title: "Apply job or hire",
     description: "Apply & get your preferable jobs with all the requirements and get it.",
+  },
+];
+
+const FAQ_ITEMS: Array<{ question: string; answer: string }> = [
+  {
+    question: "Is Jobly free for job seekers?",
+    answer:
+      "Yes. Creating a profile, browsing roles, and applying is free for candidates. Companies choose a plan when they post jobs and invite their hiring team.",
+  },
+  {
+    question: "How do I create an account and apply?",
+    answer:
+      "Sign up with email, complete your profile and resume, then open any job and submit an application with your cover letter. You can track status updates from your dashboard.",
+  },
+  {
+    question: "What is the difference between the candidate and company experience?",
+    answer:
+      "Candidates search jobs, save favorites, and manage applications. Companies use a shared workspace to post jobs, review applicants, and collaborate with teammates and recruiters.",
+  },
+  {
+    question: "How does pricing work for employers?",
+    answer:
+      "Plans are built for teams: start free, then move up as you add jobs and seats. See current tiers and features on the Pricing page—most teams begin on Starter or Growth.",
+  },
+  {
+    question: "Can my hiring team work together?",
+    answer:
+      "Yes. Invite colleagues with admin or recruiter roles, share the same applicant pipeline, and keep everyone aligned on reviews and next steps.",
+  },
+  {
+    question: "How do application updates and notifications work?",
+    answer:
+      "When a company reviews your application or changes its status, updates appear in your account in real time so you are not left wondering where you stand.",
+  },
+  {
+    question: "What happens to my profile and application data?",
+    answer:
+      "Your profile and applications are stored securely for hiring purposes. Use your account settings to manage what you share; only employers you apply to receive the details needed to evaluate your candidacy.",
+  },
+  {
+    question: "Where can I get help?",
+    answer:
+      "Start with Pricing for billing questions and open the app sections for Jobs, Company, and Profile. For account issues, use your Clerk account management from the user menu after signing in.",
   },
 ];
 
@@ -695,6 +739,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section
+        id="faq"
+        className="border-t border-border/40 bg-linear-to-b from-secondary/25 to-background py-12 md:py-16"
+      >
+        <div className="mx-auto max-w-3xl px-6">
+          <p className="text-center text-xs font-semibold tracking-wide text-jade uppercase">
+            FAQ
+          </p>
+          <h2 className="mt-2 text-center font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl">
+            Frequently asked questions
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-sm text-muted-foreground md:text-base">
+            Straight answers about signing up, hiring plans, applications, and your data.
+          </p>
+          <div className="mt-10 space-y-3">
+            {FAQ_ITEMS.map((item) => (
+              <details
+                key={item.question}
+                className="rounded-xl border border-border bg-card shadow-sm open:[&_.faq-chevron]:rotate-180"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4 text-left text-sm font-semibold text-foreground md:text-base [&::-webkit-details-marker]:hidden">
+                  <span className="pr-2">{item.question}</span>
+                  <ChevronDown className="faq-chevron size-5 shrink-0 text-muted-foreground transition-transform duration-200" aria-hidden />
+                </summary>
+                <div className="border-t border-border/60 px-4 pb-4 pt-3 text-sm leading-relaxed text-muted-foreground">
+                  {item.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="border-t border-border/40 bg-foreground py-16 text-background md:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
@@ -757,6 +835,7 @@ export default function Home() {
             <Link href="/jobs" className="transition-colors hover:text-foreground">Jobs</Link>
             <Link href="/company" className="transition-colors hover:text-foreground">Companies</Link>
             <Link href="/pricing" className="transition-colors hover:text-foreground">Pricing</Link>
+            <Link href="/#faq" className="transition-colors hover:text-foreground">FAQ</Link>
           </nav>
           <p className="text-xs text-muted-foreground/60">
             &copy; {new Date().getFullYear()} Jobly
