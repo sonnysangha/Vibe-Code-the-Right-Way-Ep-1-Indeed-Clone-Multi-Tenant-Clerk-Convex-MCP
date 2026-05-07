@@ -16,10 +16,12 @@ import {
   Menu,
   PenLine,
   Pencil,
+  Quote,
   Search,
   Send,
   Shield,
   Sparkles,
+  Star,
   UserRound,
   Users,
   X,
@@ -55,6 +57,33 @@ const COMPANIES = [
 ];
 
 const POPULAR_TAGS = ["Design", "Art", "Business", "Video Editing"];
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "I landed a remote product role in three weeks. The search filters actually match how I work—finally a jobs board that feels built for real careers.",
+    name: "Priya N.",
+    role: "Senior Product Manager",
+    kind: "candidate" as const,
+    avatarSrc: "https://i.pravatar.cc/96?img=47",
+  },
+  {
+    quote:
+      "We filled two engineering openings without drowning in spreadsheets. Applicants arrive organized and our whole hiring team stays in sync.",
+    name: "Marcus Cole",
+    role: "Head of Talent · Northline Labs",
+    kind: "employer" as const,
+    avatarSrc: "https://i.pravatar.cc/96?img=33",
+  },
+  {
+    quote:
+      "Applying took minutes, not an afternoon. I could track every submission and pick up conversations exactly where I left off.",
+    name: "Elena Vasquez",
+    role: "UX Designer",
+    kind: "candidate" as const,
+    avatarSrc: "https://i.pravatar.cc/96?img=26",
+  },
+];
 
 const HOW_IT_WORKS = [
   {
@@ -672,6 +701,81 @@ export default function Home() {
                 <Link href="/pricing">View plans</Link>
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section
+        id="testimonials"
+        className="relative overflow-hidden border-t border-border/40 bg-linear-to-b from-secondary/25 via-background to-background py-16 md:py-24 scroll-mt-24"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a1523' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-jade/10 px-3 py-1 text-xs font-semibold tracking-wide text-jade uppercase">
+              <Sparkles className="size-3" />
+              Wall of love
+            </span>
+            <h2 className="mt-4 font-(family-name:--font-bricolage) text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem] lg:leading-tight">
+              Hear from people who hire—and get hired—on Jobly
+            </h2>
+            <p className="mt-4 text-muted-foreground md:text-lg">
+              Real stories from candidates closing offers and teams running calmer hiring workflows.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-5">
+            {TESTIMONIALS.map((t, i) => (
+              <figure
+                key={t.name}
+                className="animate-slide-up group relative flex h-full flex-col rounded-2xl border border-border/80 bg-card p-6 warm-shadow transition-[box-shadow,transform] duration-300 hover:warm-shadow-md hover:-translate-y-0.5 md:p-7"
+                style={{ animationDelay: `${0.08 + i * 0.1}s` }}
+              >
+                <Quote className="absolute top-5 right-5 size-9 text-jade/15 transition-colors group-hover:text-jade/25 md:size-10" aria-hidden />
+                <div className="flex gap-0.5" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map((_, si) => (
+                    <Star
+                      key={si}
+                      className="size-4 fill-amber-accent text-amber-accent"
+                      aria-hidden
+                    />
+                  ))}
+                </div>
+                <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-foreground md:text-base">
+                  <p>&ldquo;{t.quote}&rdquo;</p>
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-border/60 pt-5">
+                  <Image
+                    src={t.avatarSrc}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="size-12 shrink-0 rounded-full object-cover ring-2 ring-background shadow-sm"
+                    unoptimized
+                  />
+                  <div className="min-w-0 text-left">
+                    <p className="truncate text-sm font-semibold">{t.name}</p>
+                    <p className="truncate text-xs text-muted-foreground">{t.role}</p>
+                    <span
+                      className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                        t.kind === "candidate"
+                          ? "bg-jade/10 text-jade"
+                          : "bg-terracotta/10 text-terracotta"
+                      }`}
+                    >
+                      {t.kind === "candidate" ? "Candidate" : "Employer"}
+                    </span>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
