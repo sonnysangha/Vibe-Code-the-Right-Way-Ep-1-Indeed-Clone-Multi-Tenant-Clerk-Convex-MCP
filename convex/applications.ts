@@ -80,10 +80,14 @@ export const applyToJob = mutation({
       });
     }
 
-    await ctx.db.patch(args.jobId, {
-      applicationCount: job.applicationCount + 1,
-      updatedAt: now,
-    });
+    if (!existing) {
+      await ctx.db.patch(args.jobId, {
+        applicationCount: job.applicationCount + 1,
+        updatedAt: now,
+      });
+    } else {
+      await ctx.db.patch(args.jobId, { updatedAt: now });
+    }
 
     await ctx.runMutation(internal.notifications.createNotification, {
       userId: job.postedByUserId,
